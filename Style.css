@@ -36,22 +36,15 @@ nav li {
 }
 
 .container {
-    max-width: 960px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 960px;
-    min-width: 260px;
-    height: 230px;
-    border-left-width: 10px;
-    border-right-width: 10px;
-    border-bottom-width: 10px;
-    margin-top: 0px;
-    margin-left: 20px;
-    margin-right: 20px;
-    width: 315px;
+    margin: 20px; /* Marge de 5px */
+    height: 550px; /* Hauteur de 550px */
+    display: flex;
+    justify-content: center; /* Centrer les cartes horizontalement */
+    align-items: flex-start; /* Aligner les cartes en haut */
+    flex-wrap: wrap; /* Permettre le passage à la ligne des cartes */
+    background-color: #cecece;
 }
+
 
 .login {
     border-radius: 5px;
@@ -67,4 +60,23 @@ nav li {
     max-width: 960px;
     background-color: #cecece;
 
+}
+
+/* cards */
+
+.left-card,
+.right-card,
+.main-card {
+    flex-basis: calc((100% - 26px) / 3); /* Répartition en 3 colonnes, avec des marges de 3px */
+    height: 200px; /* Hauteur réduite pour les petites cartes */
+    margin: 0 0 5px 0; /* Marge de 5px en bas */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-card {
+    flex-grow: 1; /* La carte principale prend tout l'espace restant */
+    margin: 3px 0; /* Marge de 3px en haut et en bas */
+    height: 291px; /* Hauteur A4 réduite pour la grande carte */
+    background-color: #fff;
 }
