@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassBook | Accueil</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Styles CSS en ligne (à déplacer vers un fichier externe) */
-       
-        /* Ajoutez vos styles CSS personnalisés ici */
-
-    </style>
 </head>
 <body>
     <header>
-        <h1>ClassBook</h1>
-        <li><a class="login" href="#">login</a></li>
+        <div class="Home-Menu">
+            <h1>ClassBook</h1>
+            <li>
+                <a class="login" href="login.php">Login</a>
+            </li>
+        </div>
     </header>
 
     <nav>
@@ -27,19 +25,30 @@
     </nav>
     <div class="theme">
     </div>
-    <h1>Actu</h1>
+    <h1 class="paragraph">Actu</h1>
     <div class="container">
-       
-        <div class="left-card"></div>
-        <div class="left-card"></div>
-        <div class="main-card"></div>
-        <div class="right-card"></div>
-        <div class="right-card"></div>
+        <div class="card-left">
+            <div class="left-card-top"></div>
+            <div class="left-card-bottom"></div>
+        </div>
+        <div class="center">
+            <div class="main-card"></div>
+        </div>
+        <div class="card-right">
+            <div class="right-card-top"></div>
+            <div class="right-card-bottom"></div>
+        </div>
+    </div>
+    <div class="section-for-books">
+        <div class="section">
+            <h1 class="title-of-section"></h1>
+        </div>
+
     </div>
     
 
     <footer>
-        <p style="margin-left: 10px;">&copy; 2023 The ClassBook</p>
+        <p class="copyright">&copy; 2023 The ClassBook</p>
     </footer>
 </body>
 </html>
