@@ -25,7 +25,7 @@ L'interface **conviviale** de **ClassBook** facilite la recherche de livres et s
 
 N'attendez plus pour découvrir les avantages de **ClassBook** et faites le passage vers une gestion de bibliothèque plus **moderne**, plus **efficace** et **gratuite** dès aujourd'hui !
 
-Et aussi vous pouvez aider la communeauté en dévloppant les poutil pour les administrateurs, les éductateurs et l'api sur ces liens :
+Et aussi vous pouvez aider la communeauté en dévloppant les outils pour les administrateurs, les éductateurs et ou l'api sur ces liens :
 
 [ClassBook For Server](https://github.com/users/Vava62600/projects/3/views/1?layout=board)
 
