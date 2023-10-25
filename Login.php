@@ -1,11 +1,30 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $utilisateur = $_POST["utilisateur"];
+    $motdepasse = $_POST["motdepasse"];
+
+    // Assurez-vous de stocker les informations d'authentification en toute sécurité dans votre application
+    // Remplacez la vérification factice ci-dessous par votre propre logique d'authentification
+
+    $utilisateur_valide = "utilisateur"; // Remplacez par le nom d'utilisateur valide
+    $motdepasse_valide = "motdepasse"; // Remplacez par le mot de passe valide
+
+    if ($utilisateur === $utilisateur_valide && $motdepasse === $motdepasse_valide) {
+        echo "success"; // Vous pouvez renvoyer d'autres données si nécessaire
+        exit;
+    } else {
+        echo "error";
+        exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Connexion</title>
-    <style>
-        body {
+    <!-- Mettez ici vos balises meta, title, et styles -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -70,14 +89,13 @@
 
         a:hover {
             text-decoration: underline;
-        }
-    </style>
+        }</style>
 </head>
 <body>
     <div class="container">
         <div class="login-box">
             <h2>Connexion</h2>
-            <form action="" method="POST" onsubmit="return validateForm();">
+            <form id="login-form">
                 <div class="input-box">
                     <input type="text" name="utilisateur" placeholder="Nom d'utilisateur" required>
                 </div>
@@ -87,21 +105,31 @@
                 <button type="submit" class="login-button">Se connecter</button>
             </form>
             <p><a href="inscription.php">S'inscrire</a></p>
+            <p id="message"></p>
         </div>
     </div>
 
     <script>
-        function validateForm() {
-            var motdepasse = document.getElementById("motdepasse").value;
-
-            // Vérification de la longueur du mot de passe
-            if (motdepasse.length < 8) {
-                alert("Le mot de passe doit comporter au moins 8 caractères.");
-                return false;
-            }
-
-            return true;
-        }
+        $(document).ready(function() {
+            $("#login-form").submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response === "success") {
+                            // L'authentification a réussi
+                            $("#message").text("Authentification réussie, redirection en cours...");
+                            window.location.href = "page_protegee.php";
+                        } else {
+                            // L'authentification a échoué
+                            $("#message").text("Nom d'utilisateur ou mot de passe incorrect.");
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
