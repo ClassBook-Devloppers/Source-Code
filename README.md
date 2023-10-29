@@ -1,12 +1,13 @@
 # ClassBook 
 
-L'objectif de **ClassBook** est de révolutionner la gestion de votre bibliothèque en remplaçant le vieux BCDI. Cet outil **open-source** offre une solution complète et **gratuite** pour une gestion bibliothécaire **moderne** et **efficace**.
+L'objectif de **ClassBook** est de révolutionner la gestion de votre bibliothèque en remplaçant BCDI. Cet outil **open-source** offre une solution complète et **gratuite** pour une gestion bibliothécaire **moderne** et **efficace**.
 
 Avec **ClassBook**, vous pouvez :
 - **Centraliser** votre collection de livres.
 - **Organiser** vos ouvrages de manière **intuitive**.
 - **Suivre en temps réel** les emprunts et les retours de livres.
 - Donner des **Informations à vos emprunteurs**
+- **personaliser** votre interface ( et celle d'administration )
 
 ## Et surtout vous pouvez changer de theme entre Jour et Nuit
 Exemple de classbook en Mode Nuit 
