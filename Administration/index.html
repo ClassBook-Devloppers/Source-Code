@@ -39,6 +39,7 @@
           <div class="overlap-group8">
             <div class="information">Informations</div>
             <div class="news">Nouveauté RSS</div>
+            <div id="RSS"></div>
           </div>
           <div class="container">
             <img class="shutdown" src="Assets/Indicator/Shutdown_light.png" alt="Shutdown_light" />
@@ -149,8 +150,42 @@
 
    <script>
 
-        // Graph for perfomances
+        //Code RSS
 
+        const rssFeed = document.getElementById("rss-feed");
+
+// URL du flux RSS que vous souhaitez afficher
+const rssUrl = "https://example.com/rss-feed.xml";
+
+
+function fetchRssFeed() {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const xml = xhr.responseXML;
+            const items = xml.querySelectorAll("item"); 
+            let html = "<ul>";
+
+            for (let i = 0; i < items.length; i++) {
+                const title = items[i].querySelector("title").textContent;
+                const link = items[i].querySelector("link").textContent;
+
+                html += `<li><a href="${link}" target="_blank">${title}</a></li>`;
+            }
+
+            html += "</ul>";
+            rssFeed.innerHTML = html;
+        }
+    };
+
+    xhr.open("GET", rssUrl, true);
+    xhr.send();
+}
+
+fetchRssFeed();
+
+
+        // Graph for perfomances
         
          function updateChart(chartId, label, temps, pourcentage) {
             const ctx = document.getElementById(chartId).getContext('2d');
