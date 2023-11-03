@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+      @font-face{
+    font-family: "Cascadia Code Regular";
+    src: url("Assets/Fonts/48b9219685fb81db1b8d6ec313e67ca4.eot");
+    src: url("Assets/Fonts/48b9219685fb81db1b8d6ec313e67ca4.eot?#iefix")format("embedded-opentype"),
+        url("Assets/Fonts/48b9219685fb81db1b8d6ec313e67ca4.woff")format("woff"),
+        url("Assets/Fonts/48b9219685fb81db1b8d6ec313e67ca4.woff2")format("woff2"),
+        url("Assets/Fonts/48b9219685fb81db1b8d6ec313e67ca4.ttf")format("truetype"),
+        url("Assets/Fonts/48b9219685fb81db1b8d6ec313e67ca4.svg#Cascadia Code Regular")format("svg");
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
         .chart-container {
             width: 80%;
             margin: 20px auto;
@@ -62,14 +74,72 @@
                     <div class="flex-row-1">
                       <div class="flex-col-3 flex-col-7">
                         <div class="ajout inter-medium-black-16px">Ajout</div>
-
+                        <div class="vertical-line"></div>
                         <div class="emprunt inter-medium-black-16px">Emprunt</div>
+                        <div class="vertical-line"></div>
                         <div class="messages inter-medium-black-16px">Messages</div>
+                        <div class="vertical-line"></div>
                         <div class="vos-elèves inter-medium-black-16px">Vos Élèves</div>
                     </div>
                   </div>
                 </div>
+                <div class="perso-menu-1 valign-text-middle inter-bold-white-16px">
+                  PERONNALISATION DES MENUS
+                </div>
               </div>
+              <div class="colors">
+                <div class="flex-col-4 flex-col-7">
+                  <div class="par-defaut">
+                    <div class="overlap-group">
+                      <div class="color-def-1"></div>
+                      <div class="color-def-2"></div>
+                      <div class="color-def-3"></div>
+                    </div>
+                    <div class="par-defaut-5 valign-text-middle inter-bold-black-12px">PAR DÉFAUT</div>
+                    <div class="printemps">
+                      <div class="printemps-1">
+                        <div class="overlap-group">
+                          <div class="color-pri-1"></div>
+                          <div class="color-pri-2"></div>
+                          <div class="color-pri-3"></div>
+                        </div>
+                        <div class="par-defaut-5 valign-text-middle inter-bold-black-12px">PRINTEMPS</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex-col-5 flex-col-7">
+                    <div class="automne">
+                      <div class="overlap-group">
+                        <div class="color-aut-1"></div>
+                        <div class="color-aut-2"></div>
+                        <div class="color-aut-3"></div>
+                      </div>
+                      <div class="automne-3 valign-text-middle inter-bold-black-12px">AUTOMNE</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-col-5 flex-col-7">
+                <div class="hiver">
+                  <div class="hiver-1">
+                    <div class="overlap-group">
+                      <div class="color-hiv-1"></div>
+                      <div class="color-hiv-2"></div>
+                      <div class="color-hiv-3"></div>
+                    </div>
+                    <div class="automne-3 valign-text-middle inter-bold-black-12px">HIVER</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="terminal">
+            <div class="overlap-group4">
+              <div class="terminal-1 valign-text-middle inter-bold-white-16px">TERMINAL</div>
+            </div>
+            <div class="command">
+              <div class="terminal">
+                <div class="output" id="output"></div>
+                <input class="input" id="input" type="text" placeholder="Entrez une commande">
             </div>
           </div>
         </div>
@@ -79,19 +149,19 @@
 
    <script>
 
-         // Fonction pour mettre à jour le diagramme avec les données réelles
+        // Graph for perfomances
+
+        
          function updateChart(chartId, label, temps, pourcentage) {
             const ctx = document.getElementById(chartId).getContext('2d');
             
-            // Effectuer une requête pour obtenir les données réelles depuis un service web
-            // Remplacez cette partie avec votre propre logique de requête
-            // Exemple de requête factice
+          
             const data = {
                 labels: temps,
                 datasets: [{
                     label: label,
                     data: pourcentage,
-                    fill: false, // Pour ne pas remplir la zone sous la courbe
+                    fill: false, 
                     borderColor: 'blue',
                     borderWidth: 2
                 }]
@@ -110,13 +180,13 @@
             };
             
             const myChart = new Chart(ctx, {
-                type: 'line', // Utilisez 'line' pour un diagramme en courbes
+                type: 'line', 
                 data: data,
                 options: options
             });
         }
 
-        // Mettre à jour le diagramme toutes les 30 secondes avec les données factices
+        
         const tempsMem = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
         const pourcentageMem = [60, 70, 75, 80, 85, 90, 88, 84, 80, 75, 70];
         updateChart("MemChart", "Mem", tempsMem, pourcentageMem);
@@ -128,6 +198,30 @@
         const tempsCPU = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
         const pourcentageCPU = [60, 70, 75, 80, 85, 90, 88, 84, 80, 75, 70];
         updateChart("CPUChart", "CPU", tempsCPU, pourcentageCPU);
-    </script>
+
+        //Ubuntu Terminal
+      
+      const output = document.getElementById("output");
+const input = document.getElementById("input");
+
+input.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        const command = input.value;
+        input.value = "";
+        output.innerHTML += `<p>> ${command}</p>`;
+        executeCommand(command);
+    }
+});
+
+function executeCommand(command) {
+    // Vous pouvez implémenter ici la logique pour exécuter des commandes
+    // ou envoyer des requêtes à un backend pour obtenir des réponses.
+    // Cet exemple ne réalise aucune action réelle.
+    const response = "Commande exécutée : " + command;
+    output.innerHTML += `<p>${response}</p>`;
+}
+
+      </script>
 </body>
 </html>
