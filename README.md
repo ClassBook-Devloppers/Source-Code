@@ -33,3 +33,6 @@ Et aussi vous pouvez aider la communeauté en dévloppant les outils pour les ad
 [ClassBook For Educators](https://github.com/users/Vava62600/projects/4/views/1?layout=board)
 
 [Website ClassBook](https://github.com/users/Vava62600/projects/5/views/1?layout=board)
+
+
+Link for RSS installer : https://www.omgubuntu.co.uk/2017/05/install-feedreader-rss-reader-ubuntu
