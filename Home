@@ -694,9 +694,9 @@ body {
               <div id="iz8m8" class="gjs-grid-column">
                 <h4 id="ij2gh" class="gjs-heading gjs-text-blue">Nos derniers Livres</h4>
                 <h2 id="ism014" id="Title.book" class="gjs-heading">Pas de Nouveauté à l'horizon !</h2>
-                <div id="igrx8" id="Desk.book" class="text-main-content">Je crois bien que ton CDI n'a pas encore reçu de nouveauté.</div><a id="iqx3z1" class="gjs-button"></a>
+                <div id="igrx8" id="Desk.book" class="text-main-content">Je crois bien que ton CDI n'a pas encore reçu de nouveauté.</div><a id="iqx3z1" class="gjs-button">En savoir plus</a>
               </div>
-              <div id="iepks" class="gjs-grid-column"><img src="" id="Img.book" alt="Book"/>
+              <div id="iepks" class="gjs-grid-column"><img width="240px" src="https://fomantic-ui.com/images/wireframe/image.png" id="Img.book" alt="Book"/>
               </div>
             </div>
           </div>
@@ -832,6 +832,7 @@ body {
           </div>
         </div>
 		<script>
+
 			//Pannel 
 		document.getElementById('PannelButton').addEventListener('click', function() {
 			toggleSidePanel();
@@ -849,33 +850,68 @@ body {
 			  sidePanel.style.width = '0';
 			}
 		  }
+
 		  //Books Script
-		  function NewBook() {
-            const nouvelId = document.getElementById('Book.ID').value;
-            const nouveauNom = document.getElementById('Book.Title').value;
-            const nouvelleDescription = document.getElementById('Book.Desk').value;
+		  // script.js
+document.addEventListener("DOMContentLoaded", function() {
+  // Fonction pour mettre à jour le titre et la description
+  function updateBookInfo(title, description) {
+    document.getElementById("bookTitle").innerText = title;
+    document.getElementById("bookDescription").innerText = description;
+  }
 
-            const nouveauLivre = {
-                id: nouvelId,
-                nom: nouveauNom,
-                description: nouvelleDescription
-            };
+  // Fonction pour traiter les données CSV
+  function processData(csvData) {
+    // Séparez les lignes du CSV
+    const lines = csvData.split('\n');
 
-            ajouterLivreDansLaBaseDeDonnees(nouveauLivre);
-        }
+    // Récupérez la dernière ligne (la plus récente)
+    const latestEntry = lines[lines.length - 2]; // La dernière ligne est vide, donc -2
 
-        function ajouterLivreDansLaBaseDeDonnees(nouveauLivre) {
-            const index = livres.findIndex(livre => livre.id === nouveauLivre.id);
+    // Séparez les colonnes
+    const [bookName, bookDescription, id, dateString] = latestEntry.split(',');
 
-            if (index !== -1) {
-                // Remplace l'ancien livre par le nouveau livre
-                livres[index] = nouveauLivre;
-                console.log("Le livre avec l'ID", nouveauLivre.id, "a été remplacé dans la base de données.");
-            } else {
-                // Ajoute le nouveau livre s'il n'existe pas encore
-                livres.push(nouveauLivre);
-                console.log("Le livre avec l'ID", nouveauLivre.id, "a été ajouté à la base de données.");
-            }
-        }
+    // Convertissez la date du format "JJ/MM/AAAA HH:MM" en objet Date
+    const date = new Date(dateString.replace(/(\d{2})\/(\d{2})\/(\d{4}) (\d{2}:\d{2})/, '$3-$2-$1T$4:00'));
+
+    // Exemple de condition fictive (à adapter selon vos besoins)
+    if (date > new Date(previousDate)) {
+      // Mettez à jour le titre et la description avec les nouvelles informations
+      updateBookInfo(bookName, bookDescription);
+
+      // Mettez à jour la variable previousDate avec la nouvelle date
+      previousDate = date.toISOString();
+    } else {
+      // Si aucune nouveauté n'est détectée après un mois (en millisecondes)
+      if (Date.now() - lastUpdateTimestamp > 30 * 24 * 60 * 60 * 1000) {
+        updateBookInfo("Pas de Nouveauté à l'horizon !", "Je crois bien que ton CDI n'a pas encore reçu de nouveauté.");
+      }
+    }
+  }
+
+  // Fonction pour récupérer les données CSV
+  function fetchCSVData() {
+    fetch('/DB/book_inf.csv')  // Remplacez cela par le chemin réel de votre fichier CSV
+      .then(response => response.text())
+      .then(data => {
+        // Traitez les données CSV pour déterminer s'il y a une nouvelle sortie de livre
+        processData(data);
+      })
+      .catch(error => console.error('Erreur lors de la récupération des données :', error));
+  }
+
+  // Variable pour stocker la date de la dernière mise à jour
+  let previousDate = "1970-01-01T00:00:00.000Z"; // Date minimale initiale
+
+  // Variable pour stocker le timestamp de la dernière mise à jour
+  let lastUpdateTimestamp = 0;
+
+  // Vérifiez les mises à jour toutes les 1min30 (en millisecondes)
+  setInterval(fetchCSVData, 90 * 1000);
+
+  // Vérifiez les mises à jour une fois au chargement de la page
+  fetchCSVData();
+});
+
 		  </script>
       </body>
