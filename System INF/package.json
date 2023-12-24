@@ -1,0 +1,31 @@
+{
+  "name": "@server-state/system-information-module",
+  "version": "0.1.2",
+  "description": "A module to view characteristics of your system",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint ./src ./tests",
+    "build": "webpack --config webpack.config.js --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/server-state/system-information-module.git"
+  },
+  "author": "server-state",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/server-state/system-information-module/issues"
+  },
+  "homepage": "https://github.com/server-state/system-information-module#readme",
+  "devDependencies": {
+    "coveralls": "^3.0.11",
+    "eslint": "^8.1.0",
+    "jest": "^27.0.1",
+    "webpack": "^5.1.0",
+    "webpack-cli": "^4.0.0"
+  },
+  "dependencies": {
+    "systeminformation": "^5.6.17"
+  }
+}

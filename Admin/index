@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    
+</head>
+<body> 
+        <div class="Navbar">
+            <div class="navbar-top">
+                <h1 id="logo-anim" class="logo">ClassBook</h1>
+                <div class="pannel-info" id="ipytp6">
+                    <button type="button" src="/assets/admin/info.png" id="notify" href="info.html">Send</button><button type="button" src="/assets/admin/profile.png" id="profile">
+      </button></div>
+            </div>
+            <div class="navbar-left">
+
+            </div>
+</body>
