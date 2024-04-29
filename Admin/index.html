@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Basic Page Info -->
+		<meta charset="utf-8" />
+		<title>Admin Pannel | Classbook</title>
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="vendors/images/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="vendors/images/favicon-16x16.png"
+		/>
+
+		<!-- Mobile Specific Metas -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"
+		/>
+
+		<!-- Google Font -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="vendors/styles/icon-font.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="src/plugins/jvectormap/jquery-jvectormap-2.0.3.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+		<!--JS-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+
+		
+	</head>
+	<body>
+
+		<div class="header">
+			<div class="header-left">
+				<div class="menu-icon bi bi-list"></div>
+				<div
+					class="search-toggle-icon bi bi-search"
+					data-toggle="header_search"
+				></div>
+				<div class="header-search">
+					<form>
+						<div class="form-group mb-0">
+							<i class="dw dw-search2 search-icon"></i>
+							<input
+								type="text"
+								class="form-control search-input"
+								placeholder="Search Here"
+							/>
+							<div class="dropdown">
+								<a
+									class="dropdown-toggle no-arrow"
+									href="#"
+									role="button"
+									data-toggle="dropdown"
+								>
+									<i class="ion-arrow-down-c"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label"
+											>From</label
+										>
+										<div class="col-sm-12 col-md-10">
+											<input
+												class="form-control form-control-sm form-control-line"
+												type="text"
+											/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label">To</label>
+										<div class="col-sm-12 col-md-10">
+											<input
+												class="form-control form-control-sm form-control-line"
+												type="text"
+											/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label"
+											>Subject</label
+										>
+										<div class="col-sm-12 col-md-10">
+											<input
+												class="form-control form-control-sm form-control-line"
+												type="text"
+											/>
+										</div>
+									</div>
+									<div class="text-right">
+										<button class="btn btn-primary">Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="header-right">
+				<div class="user-info-dropdown">
+					<div class="dropdown">
+						<a
+							class="dropdown-toggle"
+							href="#"
+							role="button"
+							data-toggle="dropdown"
+						>
+							<span class="user-icon">
+								<img src="vendors/images/userprofile.svg" alt="user" />
+							</span>
+							<span id="username" class="user-name">User</span>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+						>
+							<a class="dropdown-item" href="profile.html"
+								><i class="dw dw-user1"></i> Profile</a
+							>
+							<a class="dropdown-item" href="faq.html"
+								><i class="dw dw-help"></i> Help</a
+							>
+							<a class="dropdown-item" href="login.html"
+								><i class="dw dw-logout"></i> Log Out</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="left-side-bar">
+			<div class="brand-logo">
+				<a href="index.html">
+					<h1 style="color: white; font-style: normal; text-align: center;">ClassBook</h1>
+				</a>
+				<div class="close-sidebar" data-toggle="left-sidebar-close">
+					<i class="ion-close-round"></i>
+				</div>
+			</div>
+			<div class="menu-block customscroll">
+				<div class="sidebar-menu">
+					<ul id="accordion-menu">
+						<div class="dropdown">
+							<a href="books.html" class="dropdown-toggle">
+								<span class="micon bi bi-textarea-resize"></span
+								><span class="mtext">Books</span>
+							</a>
+						</div>
+						<div class="dropdown">
+							<a href="users.html" class="dropdown-toggle">
+								<span class="micon bi bi-textarea-resize"></span
+								><span class="mtext">Users</span>
+							</a>
+						</div>
+						<div class="dropdown">
+							<a href="blog.html" class="dropdown-toggle">
+								<span class="micon bi bi-textarea-resize"></span
+								><span class="mtext">Blog</span>
+							</a>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="mobile-menu-overlay"></div>
+
+		<div class="main-container">
+			<div class="xs-pd-20-10 pd-ltr-20">
+
+				<div class="row clearfix progress-box">
+					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+						<div class="card-box pd-30 height-100-p">
+							<div class="progress-box text-center">
+								<input
+									type="text"
+									class="knob dial1"
+									value="80"
+									data-width="120"
+									data-height="120"
+									data-linecap="round"
+									data-thickness="0.12"
+									data-bgColor="#fff"
+									data-fgColor="#1b00ff"
+									data-angleOffset="180"
+									readonly
+								/>
+								<h5 class="text-blue padding-top-10 h5">CPU</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+						<div class="card-box pd-30 height-100-p">
+							<div class="progress-box text-center">
+								<input
+									type="text"
+									class="knob dial2"
+									value="70"
+									data-width="120"
+									data-height="120"
+									data-linecap="round"
+									data-thickness="0.12"
+									data-bgColor="#fff"
+									data-fgColor="#00e091"
+									data-angleOffset="180"
+									readonly
+								/>
+								<h5 class="text-light-green padding-top-10 h5">
+									RAM
+								</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+						<div class="card-box pd-30 height-100-p">
+							<div class="progress-box text-center">
+								<input
+									type="text"
+									class="knob dial3"
+									value="90"
+									data-width="120"
+									data-height="120"
+									data-linecap="round"
+									data-thickness="0.12"
+									data-bgColor="#fff"
+									data-fgColor="#f56767"
+									data-angleOffset="180"
+									readonly
+								/>
+								<h5 class="text-light-orange padding-top-10 h5">
+									RÉSEAU
+								</h5>
+							</div>
+						</div>
+					</div>
+					<script></script>
+
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+						<div class="card-box pd-30 pt-10 height-100-p">
+							<h2 class="mb-30 h4">LES PLUS VUS</h2>
+							<div class="browser-visits">
+								<ul>
+									<li class="d-flex flex-wrap align-items-center">
+										<div class="browser-name">Book 1</div>
+										<div class="visit">
+											<span class="badge badge-pill badge-primary">50%</span>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap align-items-center">
+										<div class="browser-name">Book 2</div>
+										<div class="visit">
+											<span class="badge badge-pill badge-secondary">40%</span>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap align-items-center">
+										<div class="browser-name">Book 3</div>
+										<div class="visit">
+											<span class="badge badge-pill badge-warning">40%</span>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap align-items-center">
+										<div class="browser-name">Book 4</div>
+										<div class="visit">
+											<span class="badge badge-pill badge-warning">20%</span>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap align-items-center">
+										<div class="browser-name">Book 5</div>
+										<div class="visit">
+											<span class="badge badge-pill badge-info">20%</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-6 col-sm-12 mb-30">
+						<div class="card-box pd-30 pt-10 height-100-p">
+							<h2 class="mb-30 h4">TERMINAL</h2>
+							<div id="terminal" style="width: 636px; height: 380px;">
+								<div style='width: 100%; font-family: "Consolas"; font-size: 12pt' id="command">Initializing command session...</div>
+								<div style="overflow: hidden; width: 1px; height: 1px"><input id="cmd" /></div>
+								<script>
+									var version = "1.0";
+									var cmd = document.getElementById("cmd"), temp = "", idle = true, password = "", folder = "", computerName = "<!--computer.name-->";
+									function clearScreen() {
+										temp = "";
+										update();
+									}
+									function addText(t) {
+										temp += t;
+										update();
+									}
+									function update() {
+										if (!idle) document.getElementById("command").innerText = temp + "_";
+										else if (password) document.getElementById("command").innerText = temp + "\n" + (folder ? folder : computerName) + "> " + document.getElementById("cmd").value + "_";
+										else document.getElementById("command").innerText = temp + document.getElementById("cmd").value + "_";
+									}
+									function focus() {
+										cmd.focus();
+									}
+									cmd.onkeypress = function(e) {
+										if (e.key == "Enter" && idle) {
+											const scrollingElement = (document.scrollingElement || document.body);
+											scrollingElement.scrollTop = scrollingElement.scrollHeight;
+											var command = document.getElementById("cmd").value;
+											document.getElementById("cmd").value = "";
+											idle = false;
+											if (password) {
+												if (command.startsWith("cls")) {
+													clearScreen();
+													idle = true;
+													update();
+													return;
+												}
+												if (command.startsWith("cd")) {
+													addText("\n" + (folder ? folder : computerName) + "> " + command + "\n");
+													var args = command.split(" ").slice(1);
+													for (var i = 0; i < args.length; i++) {
+														if (!args[i] || args[i] == "" || args[i].startsWith("/")) {
+															args.splice(i, 1);
+															i--;
+														}
+													}
+													var f = args.join(" ");
+													if (f.split("")[1] != ":") f = (folder ? folder : "") + ((!folder.endsWith("\\") && !folder.endsWith("/")) ? "/" : "") + f;
+													let xhr = new XMLHttpRequest();
+													xhr.open("POST", "/");
+													xhr.setRequestHeader("Accept", "application/json");
+													xhr.setRequestHeader("Content-Type", "application/json");
+													xhr.onload = () => {
+														if (xhr.status != 200) {
+															addText("Could not connect to server. Please read the console log on your browser for more information.");
+															idle = true;
+															update();
+															return;
+														}
+														if (xhr.responseText == "The command has been executed successfully.") folder = f;
+														else addText(xhr.responseText);
+														idle = true;
+														update();
+														const scrollingElement = (document.scrollingElement || document.body);
+														scrollingElement.scrollTop = scrollingElement.scrollHeight;
+													};
+													xhr.onerror = (e) => {
+														addText("Could not connect to server. Please read the console log on your browser for more information.");
+														idle = true;
+														update();
+													};
+													let data = JSON.stringify({
+													  "password": password,
+													  "command": "cd /d \"" + f + "\"",
+													  "folder": folder ? folder : null
+													});
+													xhr.send(data);
+													return;
+												}
+												addText("\n" + (folder ? folder : computerName) + "> " + command + "\n");
+												update();
+												let xhr = new XMLHttpRequest();
+												xhr.open("POST", "/");
+												xhr.setRequestHeader("Accept", "application/json");
+												xhr.setRequestHeader("Content-Type", "application/json");
+												xhr.onload = () => {
+													if (xhr.status != 200) {
+														addText("Could not connect to server. Please read the console log on your browser for more information.");
+														idle = true;
+														update();
+														return;
+													}
+													addText(xhr.responseText);
+													idle = true;
+													update();
+													const scrollingElement = (document.scrollingElement || document.body);
+													scrollingElement.scrollTop = scrollingElement.scrollHeight;
+												};
+												xhr.onerror = (e) => {
+													addText("Could not connect to server. Please read the console log on your browser for more information.");
+													idle = true;
+													update();
+												};
+												let data = JSON.stringify({
+												  "password": password,
+												  "command": command,
+												  "folder": folder ? folder : null
+												});
+												xhr.send(data);
+											}
+											else {
+												var pass = command;
+												addText(pass + "\n");
+												update();
+												let xhr = new XMLHttpRequest();
+												xhr.open("POST", "/");
+												xhr.setRequestHeader("Accept", "application/json");
+												xhr.setRequestHeader("Content-Type", "application/json");
+												xhr.onload = () => {
+													if (xhr.status != 200) {
+														addText("Could not connect to server. Please read the console log on your browser for more information.");
+														idle = true;
+														update();
+														return;
+													}
+													addText(xhr.responseText);
+													if (!xhr.responseText.includes("Authorization success")) addText("\n\nPlease type the password here: ");
+													else password = pass;
+													idle = true;
+													update();
+													const scrollingElement = (document.scrollingElement || document.body);
+													scrollingElement.scrollTop = scrollingElement.scrollHeight;
+												};
+												xhr.onerror = (e) => {
+													addText("Could not connect to server. Please read the console log on your browser for more information.\n\nPlease type the password here: ");
+													idle = true;
+													update();
+												};
+												let data = JSON.stringify({
+												  "password": pass,
+												  "command": "echo Authorization success!",
+												});
+												xhr.send(data);
+											}
+										}
+									};
+									window.onclick = function() {
+										focus();
+									};
+									window.onload = function() {
+										let xhr = new XMLHttpRequest();
+										xhr.open("GET", "https://raw.githubusercontent.com/NozakiYuu/OpenShell/master/version.txt");
+										xhr.onload = () => {
+											if (xhr.status == 200) {
+												idle = true;
+												update();
+												clearScreen();
+												if (version != xhr.responseText) addText("OpenShell v" + version + "\n(C) 2022 NozakiYuu. All right reserved.\n\nA newer version of this software is currently available.\nYou can download it at this website: https://www.github.com/NozakiYuu/OpenShell/releases.\n\nServer running on <!--system.name-->\n\nPlease type the password here: ");
+												else addText("OpenShell v" + version + "\n(C) 2022 NozakiYuu. All right reserved.\n\nYou are currently running the latest version.\n\nServer running on <!--system.name-->\n\nPlease type the password here: ");
+												setInterval(update, 50);
+												focus();
+											}
+											else {
+												idle = true;
+												update();
+												clearScreen();
+												addText("OpenShell v" + version + "\n(C) 2022 NozakiYuu. All right reserved.\n\nCould not check for software updates. Please try again.\n\nServer running on <!--system.name-->\n\nPlease type the password here: ");
+												setInterval(update, 50);
+												focus();
+											}
+										};
+										xhr.onerror = (e) => {
+											idle = true;
+											update();
+											clearScreen();
+											addText("OpenShell v 1.0" + version + "\n(C) 2022 NozakiYuu. All right reserved.\n\nCould not check for software updates. Please try again.\n\nServer running on <!--system.name-->\n\nPlease type the password here: ");
+											setInterval(update, 50);
+											focus();
+										};
+										xhr.send();
+									};
+								</script>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="footer-wrap pd-20 mb-20 card-box">
+					The ClassBook Devloppers
+				</div>
+			</div>
+		</div>
+		
+		<!-- js -->
+		<script src="vendors/scripts/core.js"></script>
+		<script src="vendors/scripts/script.min.js"></script>
+		<script src="vendors/scripts/process.js"></script>
+		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="src/plugins/jQuery-Knob-master/jquery.knob.min.js"></script>
+		<script src="src/plugins/highcharts-6.0.7/code/highcharts.js"></script>
+		<script src="src/plugins/highcharts-6.0.7/code/highcharts-more.js"></script>
+		<script src="vendors/scripts/dashboard2.js"></script>
+		<script src="vendors/scripts/metrics.js"></script>
+	</body>
+</html>
